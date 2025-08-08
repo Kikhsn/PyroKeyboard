@@ -7,7 +7,7 @@
 [![Downloads](https://pepy.tech/badge/pykeyboard)](https://pepy.tech/project/pykeyboard)
 ![GitHub](https://img.shields.io/github/license/pystorage/pykeyboard)
 
- <p><h2>🎉 Thank you for 1M downloads 🎉 I love you...🥰</h2></p>
+ <p><h2>🎉 Thank you for 2M downloads 🎉 I love you...🥰</h2></p>
 
 </div>
 
@@ -292,3 +292,4 @@ keyboard.row(ReplyButton('Reply button 5'))
 #### Result
 
 <p><img src="https://raw.githubusercontent.com/pystorage/pykeyboard/master/docs/source/images/row_reply_button.png" alt="row_reply_button"></p>
+
