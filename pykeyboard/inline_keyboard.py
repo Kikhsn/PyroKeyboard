@@ -33,10 +33,16 @@ class InlineKeyboard(InlineKeyboardMarkup):
         self.row_width = row_width
 
     def add(self, *args):
-        self.inline_keyboard = [
+        rows = [
             args[i:i + self.row_width]
             for i in range(0, len(args), self.row_width)
         ]
+
+        for row in rows:
+            self.inline_keyboard.append(row)
+    
+    def clear(self):
+        self.inline_keyboard.clear()
 
     def row(self, *args):
         self.inline_keyboard.append([button for button in args])

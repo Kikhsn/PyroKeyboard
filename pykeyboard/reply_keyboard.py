@@ -16,10 +16,16 @@ class ReplyKeyboard(ReplyKeyboardMarkup):
         self.row_width = row_width
 
     def add(self, *args):
-        self.keyboard = [
+        rows = [
             args[i:i + self.row_width]
             for i in range(0, len(args), self.row_width)
         ]
+
+        for row in rows:
+            self.keyboard.append(row)
+    
+    def clear(self):
+        self.keyboard.clear()
 
     def row(self, *args):
         self.keyboard.append([button for button in args])
