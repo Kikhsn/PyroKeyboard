@@ -15,10 +15,11 @@ class ReplyKeyboard(ReplyKeyboardMarkup):
         )
         self.row_width = row_width
 
-    def add(self, *args):
+    def add(self, *args, row_width=None):
+        row_width = row_width or self.row_width
         rows = [
-            args[i:i + self.row_width]
-            for i in range(0, len(args), self.row_width)
+            args[i:i + row_width]
+            for i in range(0, len(args), row_width)
         ]
 
         for row in rows:
