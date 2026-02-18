@@ -124,13 +124,34 @@ class InlineKeyboard(InlineKeyboardMarkup):
             else:
                 return self._middle_pagination
 
-    def paginate(self, count_pages: int, current_page: int,
-                 callback_pattern: str):
+    def _clamp_page(self, n: int) -> int:
+        return max(1, min(self.count_pages, n))
+
+    @property
+    def _jump_row(self):
+        # Teks menunjukkan target halaman hasil lompat
+        to_m10 = self._clamp_page(self.current_page - 10)
+        to_m5  = self._clamp_page(self.current_page - 5)
+        to_p5  = self._clamp_page(self.current_page + 5)
+        to_p10 = self._clamp_page(self.current_page + 10)
+        return [
+            self._add_button(f'« {to_m10}', to_m10),
+            self._add_button(f'‹ {to_m5}',  to_m5),
+            self._add_button(f'{to_p5} ›',  to_p5),
+            self._add_button(f'{to_p10} »', to_p10),
+        ]
+    
+    def paginate(self, count_pages: int, current_page: int, callback_pattern: str, jump_row:bool=False):
         self.count_pages = count_pages
         self.current_page = current_page
         self.callback_pattern = callback_pattern
 
-        return self.inline_keyboard.append(self._build_pagination)
+        self.inline_keyboard.append(self._build_pagination)
+
+        if jump_row and self.count_pages >= 50:
+            self.inline_keyboard.append(self._jump_row)
+        
+        return self.inline_keyboard
 
     def languages(self, callback_pattern: str, locales: Union[str, List[str]],
                   row_width: int = 2):
