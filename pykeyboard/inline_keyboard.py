@@ -173,15 +173,21 @@ class InlineKeyboard(InlineKeyboardMarkup):
 
 class InlineButton(InlineKeyboardButton):
     def __init__(self, text=None, callback_data=None, url=None,
-                 login_url=None, user_id=None, switch_inline_query=None,
-                 switch_inline_query_current_chat=None, callback_game=None):
+                 web_app=None, login_url=None, user_id=None,
+                 switch_inline_query=None, switch_inline_query_current_chat=None,
+                 switch_inline_query_chosen_chat=None, copy_text=None,
+                 callback_game=None, pay=None):
         super().__init__(
             text=text,
             callback_data=callback_data,
             url=url,
+            web_app=web_app,
             login_url=login_url,
             user_id=user_id,
             switch_inline_query=switch_inline_query,
             switch_inline_query_current_chat=switch_inline_query_current_chat,
-            callback_game=callback_game
+            switch_inline_query_chosen_chat=switch_inline_query_chosen_chat,
+            copy_text=copy_text,
+            callback_game=callback_game,
+            pay=pay
         )

@@ -33,11 +33,17 @@ class ReplyKeyboard(ReplyKeyboardMarkup):
 
 
 class ReplyButton(KeyboardButton):
-    def __init__(self, text=None, request_contact=None, request_location=None):
+    def __init__(self, text=None, request_contact=None, request_location=None,
+                 request_user=None, request_chat=None, request_poll=None,
+                 web_app=None):
         super().__init__(
             text=text,
             request_contact=request_contact,
-            request_location=request_location
+            request_location=request_location,
+            request_user=request_user,
+            request_chat=request_chat,
+            request_poll=request_poll,
+            web_app=web_app
         )
 
 
@@ -49,3 +55,4 @@ class ReplyKeyboardRemove(ReplyKeyboardRemove):
 class ForceReply(ForceReply):
     def __init__(self, selective=None, placeholder=None):
         super().__init__(selective=selective, placeholder=placeholder)
+        
