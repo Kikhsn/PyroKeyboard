@@ -1,2 +1,2 @@
 pyrotgfork
-TgCrypto
+pytgcrypto
